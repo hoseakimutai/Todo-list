@@ -47,7 +47,7 @@ const addNote = () => {
 
   notesData.push(noteObj);
   localStorage.setItem("notes", JSON.stringify(notesData));
-  
+
   createNote(noteObj.uid, noteObj.title, noteObj.text, noteObj.date);
 
   error.innerText = "";
