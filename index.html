@@ -19,14 +19,16 @@
 	<body>
 		<main>
 			<div class="new-note">
-				<input type="text" name="title" id="title" placeholder="Title">
+				<div class="tittle">
+					<input type="text" name="title" id="title" placeholder="Title">
+				</div>
 				<textarea name="content" id="content" placeholder="Start writing"></textarea>
 				<div id="form-error"></div>
 			</div>
 			<div class="button-container">
 				<button class="add-btn" onclick="addNote()">Add note</button>
-				<button class="edit-btn" onclick="editNote()">Edit note</button>
-				<button class="delete-btn" onclick="deleteNote()">Delete note</button>
+				<!-- <button class="edit-btn" onclick="editNote()">Edit note</button>
+				<button class="delete-btn" onclick="deleteNote()">Delete note</button> -->
 			</div>
 			<div id="notes-wrapper"></div>
 		</main>
