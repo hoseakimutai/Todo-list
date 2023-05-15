@@ -27,18 +27,23 @@
 			</div>
 			<div class="button-container">
 				<button class="add-btn" onclick="addNote()">Add note</button>
-				<!-- <button class="edit-btn" onclick="editNote()">Edit note</button>
-				<button class="delete-btn" onclick="deleteNote()">Delete note</button> -->
 			</div>
 			<div id="notes-wrapper"></div>
+			<div class="modal">
+				<div class="completed">
+					<h3>Completed</h3>
+					<textarea name="content" id="content" placeholder="type completed tasks"></textarea>
+				</div>
+			</div>
 		</main>
 
-
+		s
 		<script>
 			const notesWrapper = document.getElementById("notes-wrapper");
 			const title = document.getElementById("title");
 			const content = document.getElementById("content");
 			const error = document.getElementById("form-error");
+			const completed = document.querySelector(".completed");
 
 			let notesData = [];
 
@@ -47,28 +52,32 @@
 				note.className = "note";
 				note.id = uid;
 				note.innerHTML = `
-    <div class="note-title">${title}</div>
-    <div class="note-controls">
-      <button class="note-edit" onclick="editNote(${uid})">
-        Edit
-      </button>
-      <button class="note-save" style="display:none" onclick="saveNote(${uid})">
-        Save
-      </button>
-      <button class="note-delete" onclick="deleteNote(${uid})">
-        Delete
-      </button>
-    </div>
-    <div class="note-text">${text}</div>
-    <div class="note-date">${date}</div>
-  `;
+			    <div class="note-title">${title}</div>
+			    <div class="note-controls">
+			      <button class="note-edit" onclick="editNote(${uid})">
+			        Edit
+			      </button>
+			      <button class="note-save" style="display:none" onclick="saveNote(${uid})">
+			        Save
+			      </button>
+			      <button class="note-delete" onclick="deleteNote(${uid})">
+			        Delete
+					<button class="completed" onclick="completed(${uid})">
+			        completed
+			      </button>
+			    </div>
+			    <div class="note-text">${text}</div>
+			    <div class="note-date">${date}</div>
+				
+				
+			  `;
 
 				notesWrapper.insertBefore(note, notesWrapper.firstChild);
 			};
 
 			const addNote = () => {
 				if (title.value.trim().length == 0 && content.value.trim().length == 0) {
-					error.innerHTML = "Note cannot be empty";
+					error.innerHTML = "Task cannot be blank";
 					return;
 				}
 
@@ -98,7 +107,7 @@
 				const noteText = note.querySelector(".note-text");
 				const noteSave = note.querySelector(".note-save");
 				const noteEdit = note.querySelector(".note-edit");
-
+				const completed = note.querySelector(".completed");
 				noteTitle.contentEditable = "true";
 				noteText.contentEditable = "true";
 				noteEdit.style.display = "none";
@@ -160,7 +169,16 @@
 					createNote(note.uid, note.title, note.text, note.date);
 				});
 			});
+			const completedTask = () => {
+				if (title.value.trim().length == 0 && content.value.trim().length == 0) {
+					error.innerHTML = "uncompleted task";
+					return;
+				}
+			}
 
+
+			// const completedTask = ['coding', 'playing football']
+			// completed.splice(1, 0, 'sleeping')
 
 			Resources
 		</script>
